@@ -17,7 +17,7 @@ request platform software package clean
 install remove inactive
 !
 !--copy new firmware
-copy [[firmware-source]] flash:
+copy [[firmware-source]]/[[firmware-file]] flash:
 !
 !--use this command to confirm that the image has been successfully copied to flash
 dir flash:*.bin

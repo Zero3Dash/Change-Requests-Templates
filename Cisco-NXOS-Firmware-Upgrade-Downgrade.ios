@@ -16,11 +16,11 @@ dir bootflash:
 !--if free space is short, remove old Cisco Firmware Images
 !
 !--copy new firmware
-copy [[firmware-source]] bootflash:[[firmware-file]]
+copy [[firmware-source]]/[[firmware-file]] bootflash:[[firmware-file]]
 !--or
-copy [[firmware-source]] bootflash:[[firmware-file]] vrf [[vrf-name]]
+copy [[firmware-source]]/[[firmware-file]] bootflash:[[firmware-file]] vrf [[vrf-name]]
 !--or
-copy [[firmware-source]] bootflash:[[firmware-file]] source-interface vlan [[vlan-id]]
+copy [[firmware-source]]/[[firmware-file]] bootflash:[[firmware-file]] source-interface vlan [[vlan-id]]
 !
 !--verify checksum
 show file bootflash:bootflash:[[firmware-file]] md5sum

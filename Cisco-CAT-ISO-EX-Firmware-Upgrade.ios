@@ -1,0 +1,47 @@
+!#################################################################
+! Cisco CAT IOS EX Firmware Upgrade
+!#################################################################
+! 4PEG Configuration Template
+! http://4peg.com/Q5H2QhCKTQdq
+!-----------------------------------------------------------------
+! [[SWITCH-NAME]]
+!-----------------------------------------------------------------
+!
+!--save the current configuration
+write memory
+!
+!--copy new firmware
+copy [[firmware-source]]/[[firmware-file]] flash:[[firmware-file]]
+!
+!--use this command to confirm that the image has been successfully copied to flash
+dir flash:*.bin
+!
+!--verify checksum
+verify /md5 flash:[[firmware-file]]
+!
+!--checksum should match: [[md5sum-checksum]]
+!--[[cisco-url-validating-the-md5-checksum]]
+!
+!--set the boot variable
+configure terminal
+no boot system
+boot system flash:packages.conf
+end
+!
+!--confirm the update boot variable
+show boot system
+!
+!--save the amended configuration
+write memory
+!
+!--install the new firmware, this command will force a reboot once the firmware has been installed
+software install file flash:[[firmware-file]] new force
+!
+!--verify the new packages have been installed
+dir flash:*.pkg
+show install summary
+show version
+!
+!--perform cleanup of pervious firmware
+request platform software package clean switch all
+!

@@ -23,7 +23,7 @@ copy [[firmware-source]]/[[firmware-file]] bootflash:[[firmware-file]] vrf [[vrf
 copy [[firmware-source]]/[[firmware-file]] bootflash:[[firmware-file]] source-interface vlan [[vlan-id]]
 !
 !--verify checksum
-show file bootflash:bootflash:[[firmware-file]] md5sum
+show file bootflash:[[firmware-file]] md5sum
 !
 !--checksum should match: [[md5sum-checksum]]
 !--[[cisco-url-validating-the-md5-checksum]]

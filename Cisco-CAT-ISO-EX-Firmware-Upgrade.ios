@@ -35,7 +35,12 @@ show boot system
 write memory
 !
 !--install the new firmware, this command will force a reboot once the firmware has been installed
+!--old method
 software install file flash:[[firmware-file]] new force
+reload
+!--new method
+request platform software package install switch all file flash:[[firmware-file]] new auto-copy verbose
+reload
 !
 !--verify the new packages have been installed
 dir flash:*.pkg
